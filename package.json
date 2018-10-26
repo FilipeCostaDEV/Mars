@@ -2,25 +2,11 @@
   "name": "ng2-admin",
   "version": "1.0.0",
   "description": "Angular and Bootstrap 4 Admin Template.",
-  "author": "Akveo <contact@akveo.com>",
-  "homepage": "http://akveo.github.io/ng2-admin/",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/akveo/ng2-admin.git"
-  },
-  "bugs": {
-    "url": "https://github.com/akveo/ng2-admin/issues"
-  },
-  "license": "MIT",
   "scripts": {
     "ng": "ng",
     "rimraf": "rimraf",
     "changelog": "standard-changelog",
-    "start": "ng serve",
-    "start:hmr": "ng serve --hmr",
-    "start:aot": "ng serve --aot",
-    "start:prod": "ng serve --prod",
-    "start:prod:aot": "ng serve --prod --aot",
+    "start": "node server.js",
     "build": "npm run clean:dist && ng build",
     "build:prod": "npm run build -- --prod",
     "build:prod:aot": "npm run build -- --aot",
@@ -35,7 +21,8 @@
     "clean:dist": "npm run rimraf -- dist",
     "clean:coverage": "npm run rimraf -- coverage",
     "gh-pages": "wintersmith build -C docs && gh-pages -d docs/build",
-    "docs:serve": "wintersmith preview -C docs"
+    "docs:serve": "wintersmith preview -C docs",
+    "postinstall": "ng build --aot -prod"
   },
   "private": true,
   "dependencies": {
@@ -60,6 +47,7 @@
     "ckeditor": "4.6.2",
     "core-js": "2.4.1",
     "easy-pie-chart": "2.1.7",
+    "express": "^4.16.4",
     "font-awesome": "4.7.0",
     "fullcalendar": "3.3.1",
     "google-maps": "3.2.1",
@@ -76,13 +64,15 @@
     "ng2-tree": "2.0.0-alpha.5",
     "ngx-uploader": "2.2.5",
     "normalize.css": "6.0.0",
+    "path": "^0.12.7",
     "roboto-fontface": "0.7.0",
     "rxjs": "5.1.0",
+    "typescript": "2.2.2",
     "zone.js": "0.8.4"
   },
   "devDependencies": {
-    "@angular/cli": "1.0.0",
-    "@angular/compiler-cli": "4.0.1",
+    "@angular/cli": "^7.0.3",
+    "@angular/compiler-cli": "^4.0.1",
     "@angular/platform-server": "4.0.1",
     "@types/electron": "1.4.35",
     "@types/fullcalendar": "2.7.40",
@@ -93,6 +83,7 @@
     "@types/node": "6.0.60",
     "codelyzer": "2.0.0",
     "electron": "1.6.2",
+    "enhanced-resolve": "^3.3.0",
     "gh-pages": "0.12.0",
     "jasmine-core": "2.5.2",
     "jasmine-spec-reporter": "3.2.0",
@@ -116,5 +107,9 @@
     "underscore": "1.8.3",
     "wintersmith": "2.2.5",
     "wintersmith-sassy": "1.1.0"
+  },
+  "engines": {
+    "node": "8.10.0",
+    "npm": "5.6.0"
   }
 }
